@@ -1,0 +1,14 @@
+{
+  "name": "acedatacloud-nano-banana",
+  "version": "1.0.0",
+  "description": "Image generation and HTTPS reference-image editing through your Ace Data Cloud account.",
+  "author": "AceDataCloud",
+  "requires_hermes": ">=0.21.6",
+  "provides_tools": [
+    "acedata_nano_banana_generate",
+    "acedata_nano_banana_task"
+  ],
+  "requires_env": [
+    "ACEDATACLOUD_API_KEY"
+  ]
+}
