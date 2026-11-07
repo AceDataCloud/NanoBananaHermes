@@ -1,0 +1,39 @@
+{
+  "canonical_repository": "https://github.com/AceDataCloud/AceDataCloudMediaHermes",
+  "canonical_commit": "230d90061406b57d50624b6772c3072ba4da9545",
+  "generator": "scripts/export_service.py",
+  "service": "nano-banana",
+  "consumer_repository": "https://github.com/AceDataCloud/NanoBananaHermes",
+  "canonical_contract": "services/nano-banana.json",
+  "identity_map": {
+    "tool_prefix": [
+      "acedatacloud_nano_banana",
+      "acedatacloud_single_nano_banana"
+    ],
+    "toolset": [
+      "acedatacloud-nano-banana",
+      "acedatacloud-single-nano-banana"
+    ],
+    "native_image_provider": [
+      "acedatacloud-nano-banana",
+      "acedatacloud-single-nano-banana"
+    ]
+  },
+  "transport_sha256": "2653fd9275cbda09beff43968d943baa82df83656217d08ddeb9521cc99b1d7f",
+  "canonical_operation_sha256": "63e679acb440cc7269a6f9850ac5c64db11b5c204adfbfb61a58861141fe8357",
+  "generated_files": {
+    "__init__.py": "9d51d110361ab2acec5c3561cb500e6545ccce8541b97aa4557b4cea73d13712",
+    "client.py": "2653fd9275cbda09beff43968d943baa82df83656217d08ddeb9521cc99b1d7f",
+    "image_provider.py": "b889f129624d6099a20ec533f5e618bd36003afe9ecc21d21fcabdffcd76e40d",
+    "services/nano-banana.json": "59bd72365c4946221771ff46b288881d9d645bef1351907137d7a5104f79b82e",
+    "plugin.yaml": "862c96f2973600624c0047e287b72cae57ff3b15595c2857b9fc4cd4fb203a96",
+    "tests/test_contracts.py": "fa834427da679d6abb5a4a697f2d8a5ea18fcd9589aef7cb7077c3ebf5ff7dd3",
+    "tests/test_registration.py": "b43832ba1897fac0d0c6e26732c74408e1e74750775195cbe7d2e5cdcf31446b",
+    "tests/test_source_profile.py": "dbe36c636c4d9c6cbc05099305adeb69c36ed5c15c9cc547b610f17bb78b881d",
+    "scripts/check_runtime.py": "be594c81cf4436cc9689babae0344815268aab33345afc391221079be151e90f",
+    "LICENSE": "72d30730d068e067be58878959bac2450f5a05f2b2e3c365cdc13a0181635c3c",
+    ".github/workflows/validate.yml": "98eb47259f09201aee53a72541d642ffed971f05b8f648d15ef535440a5a488c",
+    "README.md": "2ce2ffa357296c92237505ca93b1be71fe58bc14b14f3780f6914098796a974c",
+    "readme/README_zh_Hans.md": "6b966b328fcc69cc7ae484484b13a0c13e05518207fc438758314f78c543aba9"
+  }
+}
