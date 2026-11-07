@@ -9,11 +9,11 @@ class NanoBananaProvider(ImageGenProvider):
 
     @property
     def name(self):
-        return 'acedatacloud-nano-banana'
+        return 'acedatacloud-single-nano-banana'
 
     @property
     def display_name(self):
-        return 'Ace Data Cloud Nano Banana'
+        return 'Ace Data Cloud Nano Banana (single service)'
 
     def is_available(self):
         return available()
@@ -26,15 +26,17 @@ class NanoBananaProvider(ImageGenProvider):
 
     def get_setup_schema(self):
         return {'name': self.display_name, 'badge': 'paid', 'tag': 'Image generation and editing through Ace Data Cloud',
-                'env_vars': [{'key': 'ACEDATACLOUD_API_KEY', 'prompt': 'Ace Data Cloud API key', 'url': 'https://platform.acedata.cloud'}]}
+                'env_vars': [{'key': 'ACEDATACLOUD_API_KEY', 'prompt': 'Ace Data Cloud API key', 'url': 'https://platform.acedata.cloud/console/applications?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=nanobananahermes_readme_api_key'}]}
 
     def generate(self, prompt, aspect_ratio='landscape', *, image_url=None, reference_image_urls=None, **kwargs):
         args = {'prompt': prompt, 'model': 'nano-banana-2-lite', 'count': 1,
                 'aspect_ratio': {'square': '1:1', 'portrait': '9:16', 'landscape': '16:9'}.get(aspect_ratio, '16:9')}
-        refs = ([image_url] if image_url else []) + list(reference_image_urls or [])
-        if refs:
-            args['image_urls'] = refs
         try:
+            if reference_image_urls is not None and not isinstance(reference_image_urls, (list, tuple)):
+                raise ValueError('Reference images must be a list of HTTPS URLs.')
+            refs = ([image_url] if image_url else []) + list(reference_image_urls or [])
+            if refs:
+                args['image_urls'] = refs
             result = self.client.generate(args)
             if result['status'] == 'pending':
                 result = self.client.retrieve({'task_id': result['task_id'], 'wait_seconds': 60})
@@ -42,7 +44,7 @@ class NanoBananaProvider(ImageGenProvider):
                 return success_response(image=result['media_urls'][0], model=args['model'], prompt=prompt,
                                         aspect_ratio=aspect_ratio, provider=self.name, modality='image' if refs else 'text',
                                         extra={'task_id': result['task_id'], 'trace_id': result['trace_id']})
-            error = error_response(error='Image not completed. Recover with acedata_nano_banana_task using the same task_id; do not generate again.',
+            error = error_response(error='Image not completed. Recover with acedatacloud_single_nano_banana_task using the same task_id; do not generate again.',
                                    error_type=result['status'], provider=self.name, model=args['model'])
             error.update(task_id=result.get('task_id', ''), trace_id=result.get('trace_id', ''))
             return error
